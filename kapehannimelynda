@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapehan ni Melynda</title>
+</head>
+
+    <body bgcolor="green"text="black">
+    <style>
+        body {
+            font-family: Times New Roman;
+            text-align: center;
+        }
+
+        nav {
+            background: brown;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .box {
+            background: #ffe4c4;
+            padding: 15px;
+            margin: 10px auto;
+            width: 250px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: brown;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a2d0c;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            white-space: pre-line;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Kapehan ni Melynda</h1>
+    <p>Lidlidda, Ilocos Sur | Mountain View Vibes</p>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('menu')">Menu</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('contact')">Contact</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+    <h1>Welcome to Kapehan ni Melynda ☕</h1>
+    <p>Relax and enjoy the fresh mountain breeze while sipping your favorite coffee.</p>
+
+    <h3>🌄 Nearby Attractions</h3>
+    <ul>
+        <li><b>Lidlidda Protected Landscape</b> – A scenic forest and watershed area with mountain views.</li>
+    </ul>
+
+    <button onclick="openMap()">📍 Get Directions</button>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="page">
+    <h2>Our Menu ☕</h2>
+
+    <!-- FLAVOR -->
+    <div class="box">
+        <h3>Flavor</h3>
+        <label><input type="radio" name="flavor" value= "Barako Coffee - ₱50">Barako Coffee</label></br>
+        <label><input type="radio" name="flavor" value= "Cappuccino - ₱80">Cappuccino</label></br>
+        <label><input type="radio" name="flavor" value= "Iced Coffee - ₱70">Iced Coffee</label></br>
+        <label><input type="radio" name="flavor" value= "Hazelnut - ₱75">Hazelnut</label></br>
+        <label><input type="radio" name="flavor" value= "Motcha - ₱90">Motcha</label>
+    </div>
+
+    <!-- DESSERT -->
+    <div class="box">
+        <h3>Add-ons</h3>
+        <label><input type="checkbox" value="Pandesal & Butter - ₱30">Pandesal & Butter</label><br>
+        <label><input type="checkbox" value="Homemade Cake - ₱50">Homemade Cake</label><br>
+        <label><input type="checkbox" value="Chocolate Fudge - ₱70">Chocolate Fudge</label>
+    </div>
+
+    <!-- CONFIRM BUTTON -->
+    <button onclick="confirmOrder()">CONFIRM ORDER</button>
+
+    <p id="result"></p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+    <h2>Contact Us</h2>
+    <p><b>Name:</b> Romelyn Shane D. Sumalbag</p>
+    <p><b>Phone:</b> 09362756453</p>
+    <p><b>Gmail:</b> kapehannimelynda@gmail.com</p>
+    <p><b>Location:</b> Lidlidda, Ilocos Sur</p>
+    <p><b>Ambiance:</b> Mountain View / Nature Vibes 🌄</p>
+</div>
+
+
+<!-- ABOUT US-->
+<div id="about" class="page">
+    <h2>About Us</h2>
+    <p>
+        Kapehan ni Melynda is a cozy coffee spot located in the peaceful mountains of Lidlidda, Ilocos Sur. 
+        We offer a relaxing ambiance, fresh air, and a beautiful overlooking view of nature.
+    </p>
+    <p>
+        Our goal is to provide comfort, great coffee, and a place where people can unwind and enjoy the beauty of Ilocos.
+    </p>
+</div>
+
+<footer>
+    <p>© 2026 Kapehan ni Melynda</p>
+</footer>
+
+<script>
+function showPage(pageId) {
+    let pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+}
+
+function confirmOrder() {
+    let flavor = document.querySelector('input[name="flavor"]:checked');
+    let dessert = document.querySelectorAll('input[type="checkbox"]:checked');
+
+       let dessertList = [];
+    dessert.forEach(a => dessertList.push(a.value));
+
+    let summary =
+        "Order Summary:\n" +
+        "Flavor: " + flavor.value + "\n" +
+        "Dessert: " + (dessertList.length ? dessertList.join(", ") : "None") + "\n";
+     
+
+    document.getElementById("result").innerText = summary;
+
+    alert("Order Confirmed!");
+}
+</script>
+
+</body>
+</html>
